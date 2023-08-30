@@ -48,7 +48,7 @@ if __name__ == "__main__":
         [0, 1200],
         [1600, 1200],
     ])
-    source_image = cv2.imread(r"C:\Users\114\Downloads\SD.JPG")
+    source_image = cv2.imread(r"Path/To/Your/Image")
     t_source_image = source_image.copy()
 
     # draw markings on the source image
