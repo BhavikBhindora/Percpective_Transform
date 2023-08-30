@@ -1,15 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 22 12:57:25 2022
-
-@author: 114
-"""
-
+#Import Libraries
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+#Define a homography matrix
 def get_homography_matrix(source, destination):
     """ Calculates the entries of the Homography matrix between two sets of matching points.
     Args
@@ -40,7 +34,7 @@ def get_homography_matrix(source, destination):
     h = np.concatenate((h, [1]), axis=-1)
     return np.reshape(h, (3, 3))
 
-
+# Source points and Destination points
 if __name__ == "__main__":
     source_points = np.array([
         [101, 89],
@@ -64,7 +58,7 @@ if __name__ == "__main__":
 
     h = get_homography_matrix(source_points, destination_points)
     destination_image = cv2.warpPerspective(t_source_image, h, (1600, 1200))
-
+    #Plot Og and Transform Images
     figure = plt.figure(figsize=(12, 6))
 
     subplot1 = figure.add_subplot(1, 2, 1)
@@ -75,5 +69,6 @@ if __name__ == "__main__":
     subplot2.title.set_text("Destination Image")
     subplot2.imshow(cv2.cvtColor(destination_image, cv2.COLOR_BGR2RGB))
 
-    # plt.show()
-    # plt.savefig("output.png")
+    plt.show()
+    # Save Fig
+    plt.savefig("output.png")
